@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="jumbotron" style="margin-top:20px;">
+  <h1 class="display-4">Welcome to CryptoJeos!</h1>
+  <p class="lead">Here tou can find all the CryptoMarket Latest news and More....</p>
+
+    <a class="btn btn-success" href="https://cryptocompare.com" role="button">Learn more</a>
+  </p>
+</div>
+
+
+
+<table class="table table-dark table-striped table-bordered table-hover" style="margin-top:20px;">
+        <thead>
+          <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Price</th>
+            <th scope="col">24Hr High</th>
+            <th scope="col">24Hr Low</th>
+            <th scope="col">MarketCap</th>
+          </tr>
+        </thead>
+
+
+        <tbody>
+        {% for key,value in price.DISPLAY.items %}
+          <tr>
+            <td>{{key}}</td>
+            <td>{{ value.USD.PRICE }}</td>
+            <td>{{ value.USD.HIGHDAY }}</td>
+            <td>{{ value.USD.LOWDAY }}</td>
+            <td>{{ value.USD.MKTCAP }}</td>
+          </tr>
+        </tbody>
+        {% endfor %}
+      </table>
+
+
+<div class="container">
+    <div class="row">    
+        {% for x in api.Data %}
+        <div class="col-sm">       <div class="card" style="width: 18rem;">
+    <img class="card-img-top" src={{x.imageurl}} alt={{x.source}}>
+    <div class="card-body">
+        <h5 class="card-titile">{{x.title}}</h5>
+      <p class="card-text">{{x.body}}</p>
+      <a href="{{x.url}}" class="btn btn-success">Read More...</a>
+    </div>
+</div>
+ <br/>
+  </div>
+  {% endfor %}
+</div>
+</div>
+
+
+
+{% endblock %}

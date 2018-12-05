@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+{% if searchD.Response == "Error" %}
+    <p>Please your search Item: {{ quote }} is Not found</p>
+{% endif %}
+
+
+{% for key,value in searchD.DISPLAY.items %}
+
+  <strong>Name:</strong>{{key}}<br/>
+  <strong>Price:</strong>{{ value.USD.PRICE }}<br/>
+  <strong>24Hr High:</strong> {{ value.USD.HIGHDAY }}<br/>
+  <strong>24Hr Low:</strong>{{ value.USD.LOWDAY }}<br/>
+  <strong>MarketCap:</strong>{{ value.USD.MKTCAP }}<br/>
+{% endfor %}
+
+<br/><br/>
+
+{% endblock %}
